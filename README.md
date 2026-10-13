@@ -2,9 +2,44 @@
 
 FaMTEB / MTEB(fas) evaluation of [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3) and [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) on Persian datasets from [MCINext](https://huggingface.co/MCINext) ([paper](https://arxiv.org/abs/2502.11571)).
 
-**Results:** [COMPARISON_REPORT.md](COMPARISON_REPORT.md)
+## Results
 
-On 45 scored tasks, EmbeddingGemma-2 wins 20, BGE-M3 wins 17, and 8 are ties. Quality is close; EmbeddingGemma-2 is about 5× faster to encode on a 4 GB GPU.
+On **45 scored tasks**, EmbeddingGemma-2 wins **20**, BGE-M3 wins **17**, and **8** are ties. Quality is close; EmbeddingGemma-2 is about **5× faster** to encode on a 4 GB GPU.
+
+| Category | n | BGE-M3 | EmbeddingGemma-2 |
+|---|---:|---:|---:|
+| STS (Spearman) | 3 | **0.678** | 0.668 |
+| Pair classification (AP) | 7 | **0.835** | 0.831 |
+| Classification (accuracy) | 19 | 0.668 | **0.670** |
+| Clustering (v-measure) | 2 | 0.474 | **0.475** |
+| Retrieval (nDCG@10) | 14 | 0.351 | **0.372** |
+
+| | BGE-M3 | EmbeddingGemma-2 |
+|---|---:|---:|
+| Task wins | 17 | **20** |
+| Ties | 8 | 8 |
+| Dense dim (native) | 1024 | 768 |
+| 14 retrieval tasks | 7,942 s | **1,387 s** (5.7×) |
+
+**Use EmbeddingGemma-2** for throughput and retrieval. **Use BGE-M3** for STS, keyword/QA pair matching, and PerSHOP-style classification.
+
+Full write-up with per-task scores: **[COMPARISON_REPORT.md](COMPARISON_REPORT.md)**
+
+<details>
+<summary>Largest classification gaps</summary>
+
+| Task | BGE-M3 | Gemma-2 | Δ |
+|---|---:|---:|---|
+| PerSHOPClassification | 0.681 | 0.536 | BGE-M3 +0.145 |
+| SynPerChatbotConvSASatisfaction | 0.697 | 0.797 | Gemma +0.100 |
+| SynPerChatbotSatisfaction | 0.383 | 0.481 | Gemma +0.098 |
+| SynPerChatbotConvSAAnger | 0.773 | 0.837 | Gemma +0.063 |
+| StyleClassification | 0.695 | 0.742 | Gemma +0.047 |
+| SynPerTextToneClassification | 0.738 | 0.693 | BGE-M3 +0.045 |
+
+</details>
+
+Protocol: 1,200 examples for STS, pair, classification, and clustering; 100 queries and 2,000 corpus documents for retrieval. PersianWeb, MS MARCO-Fa, and NQ-Fa omitted. Hardware: GTX 1650 4 GB, CUDA 12.6.
 
 ## Setup
 
