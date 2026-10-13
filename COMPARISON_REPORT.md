@@ -12,9 +12,9 @@ Comparison of [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3) and [google/embe
 
 ## Summary
 
-The two models are close on quality. **Wins, category means, and the recommendation use quality metrics only.** Runtime is reported later as a separate measurement and is not used to rank the models.
+The two models are close on quality. **Wins and category means use quality metrics only.** Runtime is reported later as a separate measurement and is not used to rank the models.
 
-On 45 scored tasks, EmbeddingGemma-2 wins 20, BGE-M3 wins 17, and 8 are ties. Category means differ by at most two points except retrieval, where Gemma leads (nDCG@10 0.372 vs 0.351). BGE-M3 is stronger on STS, several pair-classification sets, and PerSHOP. Gemma is stronger on retrieval and several chatbot classification tasks.
+On 45 scored tasks, EmbeddingGemma-2 wins 20, BGE-M3 wins 17, and 8 are ties. Category means differ by at most two points except retrieval, where Gemma leads (nDCG@10 0.372 vs 0.351).
 
 ## Models
 
@@ -240,14 +240,6 @@ The gap is larger than the parameter ratio (~568M / ~270M ≈ **2.1×**) because
 - On 4 GB VRAM, BGE sits closer to the memory ceiling, which lowers occupancy relative to the smaller Gemma encoder.
 
 A 5× wall-clock ratio on this card is therefore in the same range as a 3–4× compute gap plus memory-bound overhead. It is **not** a claim that EmbeddingGemma-2 is 5× faster on large-batch servers; there the gap should move closer to the 2–3× parameter/width ratio.
-
-## Recommendation
-
-Quality only:
-
-- **Retrieval and several chatbot classification tasks:** EmbeddingGemma-2.
-- **STS, keyword/QA pair matching, and PerSHOP-style classification:** BGE-M3.
-- Overall on this protocol: EmbeddingGemma-2, from more task wins and a higher retrieval mean.
 
 ## Reproducibility
 

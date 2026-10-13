@@ -32,8 +32,6 @@ On **45 scored tasks**, EmbeddingGemma-2 wins **20**, BGE-M3 wins **17**, and **
 | Ties | 8 | 8 |
 | Dense dim (native) | 1024 | 768 |
 
-**Use EmbeddingGemma-2** for retrieval and most chatbot classification. **Use BGE-M3** for STS, keyword/QA pair matching, and PerSHOP-style classification.
-
 Full write-up with per-task scores: **[COMPARISON_REPORT.md](COMPARISON_REPORT.md)**
 
 <details>
