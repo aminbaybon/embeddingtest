@@ -4,7 +4,7 @@ FaMTEB / MTEB(fas) evaluation of [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m
 
 ## Results
 
-On **45 scored tasks**, EmbeddingGemma-2 wins **20**, BGE-M3 wins **17**, and **8** are ties. Quality is close; EmbeddingGemma-2 is about **5× faster** to encode on a 4 GB GPU.
+On **45 scored tasks**, EmbeddingGemma-2 wins **20**, BGE-M3 wins **17**, and **8** are ties. Ranking below is **quality only**; wall-clock is not part of the score.
 
 | Category | n | BGE-M3 | EmbeddingGemma-2 |
 |---|---:|---:|---:|
@@ -19,9 +19,8 @@ On **45 scored tasks**, EmbeddingGemma-2 wins **20**, BGE-M3 wins **17**, and **
 | Task wins | 17 | **20** |
 | Ties | 8 | 8 |
 | Dense dim (native) | 1024 | 768 |
-| 14 retrieval tasks | 7,942 s | **1,387 s** (5.7×) |
 
-**Use EmbeddingGemma-2** for throughput and retrieval. **Use BGE-M3** for STS, keyword/QA pair matching, and PerSHOP-style classification.
+**Use EmbeddingGemma-2** for retrieval and most chatbot classification. **Use BGE-M3** for STS, keyword/QA pair matching, and PerSHOP-style classification.
 
 Full write-up with per-task scores: **[COMPARISON_REPORT.md](COMPARISON_REPORT.md)**
 
@@ -40,6 +39,8 @@ Full write-up with per-task scores: **[COMPARISON_REPORT.md](COMPARISON_REPORT.m
 </details>
 
 Protocol: 1,200 examples for STS, pair, classification, and clustering; 100 queries and 2,000 corpus documents for retrieval. PersianWeb, MS MARCO-Fa, and NQ-Fa omitted. Hardware: GTX 1650 4 GB, CUDA 12.6.
+
+Runtime is a separate GPU wall-clock measurement, not a ranking input. Method, task list, and why a ~5× encode gap is expected from the architectures: **[COMPARISON_REPORT.md § Runtime](COMPARISON_REPORT.md#runtime)**.
 
 ## Setup
 
