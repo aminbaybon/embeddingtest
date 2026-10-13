@@ -1,6 +1,6 @@
 # BGE-M3 vs EmbeddingGemma-2 on Persian embedding tasks
 
-Comparison of [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3) and [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) on FaMTEB / MTEB(fas) Persian datasets ([Farahani et al., 2025](https://arxiv.org/abs/2502.11571)).
+Comparison of [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3) and [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) on FaMTEB / MTEB(fas) Persian tasks ([Farahani et al., 2025](https://arxiv.org/abs/2502.11571)). Dataset Hub owners are listed in [Datasets](#datasets).
 
 | | |
 |---|---|
@@ -20,6 +20,7 @@ On 45 scored tasks, EmbeddingGemma-2 wins 20, BGE-M3 wins 17, and 8 are ties. Ca
 
 | | BGE-M3 | EmbeddingGemma-2 |
 |---|---|---|
+| Hub owner | [BAAI](https://huggingface.co/BAAI) | [Google](https://huggingface.co/google) |
 | Encoder | XLM-RoBERTa | Gemma embedding text encoder |
 | Parameters | ~568M | ~270M (text) |
 | Layers | 24 | 24 |
@@ -31,6 +32,92 @@ On 45 scored tasks, EmbeddingGemma-2 wins 20, BGE-M3 wins 17, and 8 are ties. Ca
 | Sequence length | 512 | 512 |
 
 EmbeddingGemma-2 is evaluated in text-only mode. It requires bfloat16 or float32; float16 is not used.
+
+## Datasets
+
+Hub IDs as loaded. The benchmark is FaMTEB / MTEB(fas); **the Hugging Face owner is not always MCINext.**
+
+| Owner | n listed | n scored |
+|---|---:|---:|
+| [MCINext](https://huggingface.co/MCINext) | 45 | 41 |
+| [MTEB](https://huggingface.co/mteb) | 3 | 3 |
+| [alighasemi](https://huggingface.co/alighasemi) | 1 | 1 |
+
+FaIntent (MCINext) failed CV and is excluded from scores. PersianWeb, MS MARCO-Fa, and NQ-Fa (MCINext) were listed and omitted as large corpora.
+
+### STS — MCINext
+
+| Task | Dataset |
+|---|---|
+| FarSick | [MCINext/farsick-sts](https://huggingface.co/datasets/MCINext/farsick-sts) |
+| SynPerSTS | [MCINext/synthetic-persian-sts](https://huggingface.co/datasets/MCINext/synthetic-persian-sts) |
+| Query2Query | [MCINext/query-to-query-sts](https://huggingface.co/datasets/MCINext/query-to-query-sts) |
+
+### Pair classification
+
+| Task | Dataset | Owner |
+|---|---|---|
+| SynPerQAPC | [MCINext/synthetic-persian-qa-pair-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-qa-pair-classification) | MCINext |
+| SynPerTextKeywordsPC | [MCINext/synthetic-persian-text-keyword-pair-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-text-keyword-pair-classification) | MCINext |
+| SynPerChatbotRAGFAQPC | [MCINext/synthetic-persian-chatbot-rag-faq-pair-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-rag-faq-pair-classification) | MCINext |
+| FarsTail | [mteb/FarsTail](https://huggingface.co/datasets/mteb/FarsTail) | MTEB |
+| FarsiParaphraseDetection | [alighasemi/farsi_paraphrase_detection](https://huggingface.co/datasets/alighasemi/farsi_paraphrase_detection) | alighasemi |
+| ParsinluQueryParaphPC | [mteb/ParsinluQueryParaphPC](https://huggingface.co/datasets/mteb/ParsinluQueryParaphPC) | MTEB |
+| ParsinluEntail | [mteb/ParsinluEntail](https://huggingface.co/datasets/mteb/ParsinluEntail) | MTEB |
+
+### Classification — MCINext
+
+| Task | Dataset |
+|---|---|
+| SIDClassification | [MCINext/sid-classification](https://huggingface.co/datasets/MCINext/sid-classification) |
+| DigiMagClassification | [MCINext/DigiMag](https://huggingface.co/datasets/MCINext/DigiMag) |
+| FaIntent | [MCINext/FaIntent](https://huggingface.co/datasets/MCINext/FaIntent) (failed; not scored) |
+| PerSHOPClassification | [MCINext/pershop-classification](https://huggingface.co/datasets/MCINext/pershop-classification) |
+| StyleClassification | [MCINext/style-classification](https://huggingface.co/datasets/MCINext/style-classification) |
+| SynPerTextToneClassification | [MCINext/synthetic-persian-text-tone-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-text-tone-classification) |
+| SynPerChatbotSatisfaction | [MCINext/synthetic-persian-chatbot-satisfaction-level-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-satisfaction-level-classification) |
+| SynPerChatbotToneUser | [MCINext/synthetic-persian-chatbot-tone-user-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-tone-user-classification) |
+| SynPerChatbotToneChatbot | [MCINext/synthetic-persian-chatbot-tone-chatbot-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-tone-chatbot-classification) |
+| SynPerChatbotRAGToneUser | [MCINext/synthetic-persian-chatbot-rag-tone-user-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-rag-tone-user-classification) |
+| SynPerChatbotRAGToneChatbot | [MCINext/synthetic-persian-chatbot-rag-tone-chatbot-classification](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-rag-tone-chatbot-classification) |
+| SynPerChatbotConvSAHappiness | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-happiness](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-happiness) |
+| SynPerChatbotConvSASadness | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-sadness](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-sadness) |
+| SynPerChatbotConvSAAnger | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-anger](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-anger) |
+| SynPerChatbotConvSAFear | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-fear](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-fear) |
+| SynPerChatbotConvSALove | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-love](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-love) |
+| SynPerChatbotConvSASurprise | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-surprise](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-surprise) |
+| SynPerChatbotConvSASatisfaction | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-satisfaction](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-satisfaction) |
+| SynPerChatbotConvSAFriendship | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-friendship](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-friendship) |
+| SynPerChatbotConvSAJealousy | [MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-jealousy](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-conversational-sentiment-analysis-jealousy) |
+
+### Clustering — MCINext
+
+| Task | Dataset |
+|---|---|
+| BeytooteClustering | [MCINext/beytoote-clustering](https://huggingface.co/datasets/MCINext/beytoote-clustering) |
+| SIDClustering | [MCINext/sid-clustering](https://huggingface.co/datasets/MCINext/sid-clustering) |
+
+### Retrieval — MCINext
+
+| Task | Dataset | Status |
+|---|---|---|
+| SAMSumFa | [MCINext/samsum-fa](https://huggingface.co/datasets/MCINext/samsum-fa) | scored |
+| SynPerChatbotSumSRetrieval | [MCINext/synthetic-persian-chatbot-summary-retrieval](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-summary-retrieval) | scored |
+| SynPerChatbotRAGSumSRetrieval | [MCINext/synthetic-persian-chatbot-rag-summary-retrieval](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-rag-summary-retrieval) | scored |
+| SciFact-Fa | [MCINext/scifact-fa-v2](https://huggingface.co/datasets/MCINext/scifact-fa-v2) | scored |
+| ArguAna-Fa | [MCINext/arguana-fa-v2](https://huggingface.co/datasets/MCINext/arguana-fa-v2) | scored |
+| FiQA2018-Fa | [MCINext/fiqa-fa-v2](https://huggingface.co/datasets/MCINext/fiqa-fa-v2) | scored |
+| Quora-Fa | [MCINext/quora-fa-v2](https://huggingface.co/datasets/MCINext/quora-fa-v2) | scored |
+| SCIDOCS-Fa | [MCINext/scidocs-fa-v2](https://huggingface.co/datasets/MCINext/scidocs-fa-v2) | scored |
+| TRECCOVID-Fa | [MCINext/trec-covid-fa-v2](https://huggingface.co/datasets/MCINext/trec-covid-fa-v2) | scored |
+| NFCorpus-Fa | [MCINext/nfcorpus-fa](https://huggingface.co/datasets/MCINext/nfcorpus-fa) | scored |
+| SynPerQARetrieval | [MCINext/synthetic-persian-qa-retrieval](https://huggingface.co/datasets/MCINext/synthetic-persian-qa-retrieval) | scored |
+| SynPerChatbotTopicsRetrieval | [MCINext/synthetic-persian-chatbot-topics-retrieval](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-topics-retrieval) | scored |
+| SynPerChatbotRAGTopicsRetrieval | [MCINext/synthetic-persian-chatbot-rag-topics-retrieval](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-rag-topics-retrieval) | scored |
+| SynPerChatbotRAGFAQRetrieval | [MCINext/synthetic-persian-chatbot-rag-faq-retrieval](https://huggingface.co/datasets/MCINext/synthetic-persian-chatbot-rag-faq-retrieval) | scored |
+| PersianWebDocumentRetrieval | [MCINext/persian-web-document-retrieval](https://huggingface.co/datasets/MCINext/persian-web-document-retrieval) | omitted (large) |
+| MSMARCO-Fa | [MCINext/msmarco-fa](https://huggingface.co/datasets/MCINext/msmarco-fa) | omitted (large) |
+| NQ-Fa | [MCINext/nq-fa](https://huggingface.co/datasets/MCINext/nq-fa) | omitted (large) |
 
 ## Quality
 

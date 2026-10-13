@@ -1,6 +1,18 @@
 # Persian embedding evaluation
 
-FaMTEB / MTEB(fas) evaluation of [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3) and [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) on Persian datasets from [MCINext](https://huggingface.co/MCINext) ([paper](https://arxiv.org/abs/2502.11571)).
+FaMTEB / MTEB(fas) evaluation of [BAAI/bge-m3](https://huggingface.co/BAAI/bge-m3) and [google/embeddinggemma-2](https://huggingface.co/google/embeddinggemma-2) on Persian embedding tasks ([Farahani et al., 2025](https://arxiv.org/abs/2502.11571)).
+
+**Models:** [BAAI](https://huggingface.co/BAAI) (BGE-M3) and [Google](https://huggingface.co/google) (EmbeddingGemma-2).
+
+**Datasets** are listed by Hugging Face owner. Most are from [MCINext](https://huggingface.co/MCINext). Four pair-classification sets are not:
+
+| Owner | Role | Tasks |
+|---|---|---|
+| [MCINext](https://huggingface.co/MCINext) | STS, classification, clustering, retrieval | 45 listed (41 scored; FaIntent failed; 3 large corpora omitted) |
+| [MTEB](https://huggingface.co/mteb) | Pair classification | [FarsTail](https://huggingface.co/datasets/mteb/FarsTail), [ParsinluEntail](https://huggingface.co/datasets/mteb/ParsinluEntail), [ParsinluQueryParaphPC](https://huggingface.co/datasets/mteb/ParsinluQueryParaphPC) |
+| [alighasemi](https://huggingface.co/alighasemi) | Pair classification | [farsi_paraphrase_detection](https://huggingface.co/datasets/alighasemi/farsi_paraphrase_detection) |
+
+Full per-task Hub IDs: **[COMPARISON_REPORT.md § Datasets](COMPARISON_REPORT.md#datasets)**.
 
 ## Results
 
